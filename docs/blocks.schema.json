@@ -1,0 +1,30 @@
+/**
+ * @file
+ * Describe the expected response for a block request.
+ */
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required": true,
+  "properties": {
+    "delta": {
+      "type": "string",
+      "required": true
+    },
+    "bid": {
+      "type": "number",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "weight": {
+      "type": "number"
+    }
+  }
+}

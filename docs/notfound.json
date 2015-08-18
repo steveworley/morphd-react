@@ -1,0 +1,12 @@
+/**
+ * @file
+ * Describe a 404 from the API.
+ */
+{
+  "time": "",
+  "status": "Not Found",
+  "error": {
+    "message": "Could not find requested resource.",
+    "link": "http://example.com/docs/#not_found"
+  }
+}

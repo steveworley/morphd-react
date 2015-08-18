@@ -1,0 +1,12 @@
+/**
+ * @file
+ * Describe an unauthorised request.
+ */
+{
+  "time": "",
+  "status": "Unauthorised",
+  "error": {
+    "message": "Access token mismatch.",
+    "link": "http://example.com/docs/#unauthorised"
+  }
+}

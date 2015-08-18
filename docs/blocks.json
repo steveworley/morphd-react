@@ -1,0 +1,30 @@
+/**
+ * @file
+ * Define what a block request will look like.
+ */
+{
+  "time": "",
+  "version": 1,
+  "status": "OK",
+  "meta": {
+    "page": 1,
+    "total": 10,
+    "limit": 10
+  },
+  "data": [
+    {
+      "bid": 1,
+      "delta": "gems",
+      "title": "Illustrious Gems",
+      "content": "<div class=\"\">Make the content of the block!</div>",
+      "weight": 1
+    },
+    {
+      "bid": 2,
+      "delta": "games",
+      "title": "Good Games",
+      "content": "<div class=\"\">A list of some games includes:</div>",
+      "weight": 2
+    }
+  ]
+}

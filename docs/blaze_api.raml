@@ -1,0 +1,114 @@
+#%RAML 0.8
+
+title: Drupal Content API
+baseUri: http://example.com/api/{version}
+version: v1
+traits:
+  - paged:
+      queryParameters:
+        p:
+          description: Determine where to start the limit from
+          type: number
+  - limitable:
+      queryParameters:
+        limit:
+          description: Determine how many results to return
+          type: number
+  - secured:
+      queryParameters:
+        code:
+          description: An access token to help identify who is making the request
+          type: string
+
+/blocks:
+  is: [paged, limitable]
+  get:
+    description: |
+      Get a list of blocks.
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "$schema": "http://json-schema.org/draft-03/schema",
+                "id": "http://jsonschema.net",
+                "required": true,
+                "properties": {
+                  "delta": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "bid": {
+                    "type": "number",
+                    "required": true
+                  },
+                  "title": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "content": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "weight": {
+                    "type": "number"
+                  }
+                }
+              }
+            example: !include blocks.json
+      403:
+        body:
+          application/json:
+            schema: |
+              {
+                "$schema": "http://json-schema.org/draft-03/schema",
+                "id": "http://jsonschema.net",
+                "required": true,
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "link": {
+                    "type": "string",
+                    "required": false
+                  }
+                }
+              }
+            example: !include unauthorised.json
+
+  /{region}:
+    get:
+      description: |
+        Get blocks from a specific region in Drupal.
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include blocks.schema.json
+              example: !include blocks.json
+
+        404:
+          body:
+            application/json:
+              schema: !include error.schema.json
+              example: !include notfound.json
+
+
+  /{blockId}:
+    get:
+      description: |
+        Get a single block resource.
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include blocks.schema.json
+              example: !include blocks.json
+
+        404:
+          body:
+            application/json:
+              schema: !include error.schema.json
+              example: !include notfound.json
